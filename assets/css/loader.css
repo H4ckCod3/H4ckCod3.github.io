@@ -1,0 +1,80 @@
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loader svg {
+    width: 120px;
+    height: 120px;
+    color: #ffffff;
+}
+
+.loader svg path:nth-child(1) {
+    animation: glowLayer 1.5s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.loader svg path:nth-child(2) {
+    animation: glowLayer 1.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.loader svg path:nth-child(3) {
+    animation: glowLayer 1.5s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@keyframes glowLayer {
+    0% {
+        filter: brightness(1);
+        stroke-width: 2;
+    }
+    50% {
+        filter: brightness(1.5);
+        stroke-width: 2.5;
+    }
+    100% {
+        filter: brightness(1);
+        stroke-width: 2;
+    }
+}
+
+.loader-bar {
+    width: 200px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+    transition: width 0.1s ease;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+body.loading > *:not(.loader) {
+    opacity: 0;
+    visibility: hidden;
+} 
